@@ -23,9 +23,16 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
           {/* Logo */}
           <Link 
             to="/" 
-            className="font-serif font-semibold text-xl text-primary-800 hover:text-primary-900 transition-colors"
+            className="flex items-center space-x-3 hover:opacity-90 transition-opacity"
           >
-            In Quest of Knowledge
+            <img 
+              src="/images/logo.png" 
+              alt="In Quest of Knowledge Logo" 
+              className="h-8 w-8"
+            />
+            <span className="font-serif font-semibold text-xl text-primary-800">
+              In Quest of Knowledge
+            </span>
           </Link>
 
           {/* Desktop Navigation */}

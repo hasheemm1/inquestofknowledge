@@ -1,6 +1,7 @@
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
+import Navigation from "~/components/Navigation";
 import { getOrder } from "~/lib/orders";
 
 export const meta: MetaFunction = () => {
@@ -36,22 +37,7 @@ export default function Confirmation() {
 
   return (
     <div className="min-h-screen">
-      {/* Navigation */}
-      <nav className="bg-white/80 backdrop-blur-sm border-b border-primary-200 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link to="/" className="font-serif font-semibold text-xl text-primary-800">
-              In Quest of Knowledge
-            </Link>
-            <div className="hidden md:flex space-x-8">
-              <Link to="/" className="text-primary-700 hover:text-primary-900 transition-colors">Home</Link>
-              <Link to="/about" className="text-primary-700 hover:text-primary-900 transition-colors">About</Link>
-              <Link to="/testimonials" className="text-primary-700 hover:text-primary-900 transition-colors">Testimonials</Link>
-              <Link to="/order" className="text-primary-700 hover:text-primary-900 transition-colors">Order Book</Link>
-            </div>
-          </div>
-        </div>
-      </nav>
+      <Navigation currentPath="/confirmation" />
 
       {/* Confirmation Section */}
       <section className="py-16">
