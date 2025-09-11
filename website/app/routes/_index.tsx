@@ -1,0 +1,166 @@
+import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "In Quest of Knowledge - A Biography of Dr. Vibha Dineshkumar Shah" },
+    { name: "description", content: "A compelling biography of Late Dr. Vibha Dineshkumar Shah - MPharm, FCCA, MBA. Her extraordinary journey from Nairobi to Cardiff and beyond." },
+  ];
+};
+
+export default function Index() {
+  return (
+    <div className="min-h-screen">
+      {/* Navigation */}
+      <nav className="bg-white/80 backdrop-blur-sm border-b border-primary-200 sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <div className="font-serif font-semibold text-xl text-primary-800">
+              In Quest of Knowledge
+            </div>
+            <div className="hidden md:flex space-x-8">
+              <Link to="/" className="text-primary-700 hover:text-primary-900 transition-colors">Home</Link>
+              <Link to="/about" className="text-primary-700 hover:text-primary-900 transition-colors">About</Link>
+              <Link to="/testimonials" className="text-primary-700 hover:text-primary-900 transition-colors">Testimonials</Link>
+              <Link to="/order" className="btn-primary">Order Book</Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Book Cover */}
+            <div className="flex justify-center">
+              <div className="relative">
+                <div className="transform rotate-3 hover:rotate-0 transition-transform duration-300">
+                  <img 
+                    src="/images/cover.png" 
+                    alt="In Quest of Knowledge - A Biography of Late Dr Vibha Dineshkumar Shah"
+                    className="w-80 h-auto rounded-lg shadow-2xl border border-gray-200"
+                  />
+                  {/* Optional overlay for better text readability if needed */}
+                  <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-5 transition-all duration-300 rounded-lg"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Content */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="font-serif text-4xl lg:text-5xl font-bold text-primary-900 mb-6 leading-tight">
+                  A Life Beyond Measure
+                </h2>
+                <p className="text-xl text-primary-700 leading-relaxed mb-6">
+                  From the blue sky of Nairobi to the lecture halls of Cardiff, from the counter of a small pharmacy to the wide horizons of travel and family - Vibha's journey was extraordinary.
+                </p>
+                <p className="text-lg text-primary-600 leading-relaxed">
+                  She was a daughter, a sister, a wife, a mother, and above all, a quiet force of resilience and grace. This moving biography celebrates her chequered life in a compelling display of charm, intellect, diligence and compassion.
+                </p>
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link to="/order" className="btn-primary text-center">
+                  Order Your Copy
+                </Link>
+                <Link to="/about" className="btn-secondary text-center">
+                  Learn More
+                </Link>
+              </div>
+
+              {/* Quote */}
+              <blockquote className="border-l-4 border-primary-400 pl-6 py-4">
+                <p className="quote text-primary-800">
+                  "Don't simply dream; discover ways to stay your goals."
+                </p>
+                <div className="mt-3 text-sm text-primary-700">
+                  <p className="font-medium">In Gujarati wisdom:</p>
+                  <p className="font-serif text-base mt-1" lang="gu">સપનાઓ દેખાવા નહીં, એને પૂરા કરવા જીવવું શીખો.</p>
+                  <p className="text-xs italic mt-1">Sapanā'ō dēkhāvā nahīṁ, ēnē pūrā karavā jīvavuṁ śīkhō</p>
+                </div>
+                <cite className="text-sm text-primary-600 font-medium mt-2 block">— Dr. Vibha Dineshkumar Shah</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Book Details */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h3 className="font-serif text-3xl font-bold text-primary-900 mb-4">Available Editions</h3>
+            <p className="text-lg text-primary-600">Choose your preferred format</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="card text-center">
+              <h4 className="font-serif text-xl font-semibold text-primary-800 mb-2">Paperback Edition</h4>
+              <p className="text-primary-600 mb-4">ISBN 978-9914-35-124-8</p>
+              <div className="text-3xl font-bold text-gold-600 mb-4">KSh 2,500</div>
+              <Link to="/order?edition=paperback" className="btn-primary w-full">
+                Order Paperback
+              </Link>
+            </div>
+            
+            <div className="card text-center">
+              <h4 className="font-serif text-xl font-semibold text-primary-800 mb-2">Hardback Edition</h4>
+              <p className="text-primary-600 mb-4">ISBN 978-9914-35-125-5</p>
+              <div className="text-3xl font-bold text-gold-600 mb-4">KSh 3,500</div>
+              <Link to="/order?edition=hardback" className="btn-primary w-full">
+                Order Hardback
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Quote */}
+      <section className="py-16 bg-gradient-to-r from-primary-100 to-gold-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <blockquote className="text-2xl lg:text-3xl font-serif italic text-primary-800 leading-relaxed mb-6">
+            "Some lives are measured in years. Vibha's is measured in love."
+          </blockquote>
+          <p className="text-lg text-primary-600">
+            Part love story, part legacy, this book is a testament to how one woman's light can continue to guide others long after she is gone.
+          </p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-primary-900 text-white py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h5 className="font-serif text-xl font-semibold mb-4">In Quest of Knowledge</h5>
+              <p className="text-primary-200 leading-relaxed">
+                A Biography of Late Dr Vibha Dineshkumar Shah - MPharm, FCCA, MBA
+              </p>
+            </div>
+            <div>
+              <h6 className="font-semibold mb-4">Contact</h6>
+              <div className="space-y-2 text-primary-200">
+                <p>P.O. Box 1801-00606, Nairobi</p>
+                <p>Email: info@inquestofknowledge.com</p>
+                <p>Website: www.inquestofknowledge.com</p>
+              </div>
+            </div>
+            <div>
+              <h6 className="font-semibold mb-4">Quick Links</h6>
+              <div className="space-y-2">
+                <Link to="/about" className="block text-primary-200 hover:text-white transition-colors">About the Book</Link>
+                <Link to="/testimonials" className="block text-primary-200 hover:text-white transition-colors">Testimonials</Link>
+                <Link to="/order" className="block text-primary-200 hover:text-white transition-colors">Order Now</Link>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-300">
+            <p>&copy; 2025 Dineshkumar Devchand Shah. All rights reserved. Copyright Board No.: RZ79824</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
