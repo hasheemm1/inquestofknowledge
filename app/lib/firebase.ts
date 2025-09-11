@@ -1,24 +1,18 @@
-import { initializeApp } from 'firebase/app';
-import { getFirestore } from 'firebase/firestore';
+// Firebase Admin SDK for server-side operations
+import admin from 'firebase-admin';
 
-// WEB APP CONFIG (safe for client-side)
-// Get this from Firebase Console → Project Settings → General → Your apps → Web app
-const firebaseConfig = {
-  apiKey: "your-web-api-key-from-firebase-console",
-  authDomain: "inquest-of-knowledge.firebaseapp.com",
-  projectId: "inquest-of-knowledge",
-  storageBucket: "inquest-of-knowledge.appspot.com",
-  messagingSenderId: "your-messaging-sender-id",
-  appId: "your-app-id"
-};
+// Initialize Firebase Admin (server-side only)
+if (!admin.apps.length) {
+  // Use your service account file directly
+  const serviceAccount = require('../../serviceAccount.json');
 
-// Note: This config is SAFE to put directly in code
-// It's designed for client-side use and doesn't give admin access
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    projectId: "inquest-of-knowledge",
+  });
+}
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// Initialize Firestore using Admin SDK
+export const db = admin.firestore();
 
-// Initialize Firestore
-export const db = getFirestore(app);
-
-export default app;
+export default admin;

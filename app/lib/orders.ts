@@ -1,11 +1,10 @@
-import { collection, addDoc, doc, updateDoc, getDoc } from 'firebase/firestore';
 import { db } from './firebase';
 import type { OrderData } from '~/types/order';
 
 export async function createOrder(orderData: Omit<OrderData, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
   try {
     const now = new Date();
-    const docRef = await addDoc(collection(db, 'orders'), {
+    const docRef = await db.collection('orders').add({
       ...orderData,
       createdAt: now,
       updatedAt: now,
@@ -19,8 +18,7 @@ export async function createOrder(orderData: Omit<OrderData, 'id' | 'createdAt' 
 
 export async function updateOrder(orderId: string, updates: Partial<OrderData>): Promise<void> {
   try {
-    const orderRef = doc(db, 'orders', orderId);
-    await updateDoc(orderRef, {
+    await db.collection('orders').doc(orderId).update({
       ...updates,
       updatedAt: new Date(),
     });
@@ -32,13 +30,12 @@ export async function updateOrder(orderId: string, updates: Partial<OrderData>):
 
 export async function getOrder(orderId: string): Promise<OrderData | null> {
   try {
-    const orderRef = doc(db, 'orders', orderId);
-    const orderSnap = await getDoc(orderRef);
+    const orderDoc = await db.collection('orders').doc(orderId).get();
     
-    if (orderSnap.exists()) {
+    if (orderDoc.exists) {
       return {
-        id: orderSnap.id,
-        ...orderSnap.data(),
+        id: orderDoc.id,
+        ...orderDoc.data(),
       } as OrderData;
     }
     
