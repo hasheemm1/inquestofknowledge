@@ -1,15 +1,19 @@
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
 
+// WEB APP CONFIG (safe for client-side)
+// Get this from Firebase Console → Project Settings → General → Your apps → Web app
 const firebaseConfig = {
-  // TODO: Replace with your actual Firebase config from Step 3
-  apiKey: process.env.FIREBASE_API_KEY || "your-api-key",
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || "your-project.firebaseapp.com",
-  projectId: process.env.FIREBASE_PROJECT_ID || "your-project-id",
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "your-project.appspot.com",
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "123456789",
-  appId: process.env.FIREBASE_APP_ID || "your-app-id"
+  apiKey: "your-web-api-key-from-firebase-console",
+  authDomain: "inquest-of-knowledge.firebaseapp.com",
+  projectId: "inquest-of-knowledge",
+  storageBucket: "inquest-of-knowledge.appspot.com",
+  messagingSenderId: "your-messaging-sender-id",
+  appId: "your-app-id"
 };
+
+// Note: This config is SAFE to put directly in code
+// It's designed for client-side use and doesn't give admin access
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

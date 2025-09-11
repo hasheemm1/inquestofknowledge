@@ -19,6 +19,9 @@ node_modules
 # Firebase
 firebase-debug.log
 .firebase/
+serviceAccount.json
+firebase-adminsdk-*.json
+*-firebase-adminsdk-*.json
 
 # Logs
 logs
