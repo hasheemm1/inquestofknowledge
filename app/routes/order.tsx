@@ -3,7 +3,7 @@ import { json, redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useLoaderData, useNavigation } from "@remix-run/react";
 import { useState } from "react";
 import Navigation from "~/components/Navigation";
-import { createOrder, calculateTotal } from "~/lib/orders";
+import { calculateTotal } from "~/lib/orders";
 import type { FormErrors, OrderData } from "~/types/order";
 
 export const meta: MetaFunction = () => {
@@ -57,12 +57,22 @@ export async function action({ request }: ActionFunctionArgs) {
   try {
     const totalAmount = calculateTotal(orderData.edition, orderData.quantity);
     
-    const orderId = await createOrder({
-      ...orderData,
-      totalAmount,
-      status: 'pending',
+    // Create order via API route to avoid Firebase import issues
+    const response = await fetch(new URL("/api/orders", request.url), {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        ...orderData,
+        totalAmount,
+        status: 'pending',
+      }),
     });
 
+    if (!response.ok) {
+      throw new Error("Failed to create order");
+    }
+
+    const { orderId } = await response.json();
     return redirect(`/payment?orderId=${orderId}`);
   } catch (error) {
     return json({ 
