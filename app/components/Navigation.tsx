@@ -28,7 +28,7 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
             <img 
               src="/images/logo.png" 
               alt="In Quest of Knowledge Logo" 
-              className="h-8 w-8"
+              className="h-12 w-12"
             />
             <span className="font-serif font-semibold text-xl text-primary-800">
               In Quest of Knowledge

@@ -195,8 +195,11 @@ export default function Testimonials() {
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h5 className="font-serif text-xl font-semibold mb-4">In Quest of Knowledge</h5>
-              <p className="text-primary-200 leading-relaxed">
-                A Biography of Late Dr Vibha Dineshkumar Shah - MPharm, FCCA, MBA
+              <p className="text-primary-200 leading-relaxed italic">
+                "Praise from literary critics, educators, and community leaders"
+              </p>
+              <p className="text-primary-300 text-sm mt-2">
+                ISBN 978-9914-35-124-8 (Paperback) • ISBN 978-9914-35-125-5 (Hardback)
               </p>
             </div>
             <div>
