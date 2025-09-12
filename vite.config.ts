@@ -17,4 +17,10 @@ export default defineConfig({
     wasm(),
     topLevelAwait(),
   ],
+  ssr: {
+    external: ['firebase-admin'],
+  },
+  optimizeDeps: {
+    exclude: ['firebase-admin'],
+  },
 });

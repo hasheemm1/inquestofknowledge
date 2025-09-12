@@ -3,7 +3,16 @@ import { json, redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useLoaderData, useNavigation } from "@remix-run/react";
 import { useState } from "react";
 import Navigation from "~/components/Navigation";
-import { calculateTotal } from "~/lib/orders";
+// import { calculateTotal } from "~/lib/orders";
+
+// Temporary inline function to test routing
+function calculateTotal(edition: 'paperback' | 'hardback', quantity: number): number {
+  const prices = {
+    paperback: 2500,
+    hardback: 3500,
+  };
+  return prices[edition] * quantity;
+}
 import type { FormErrors, OrderData } from "~/types/order";
 
 export const meta: MetaFunction = () => {
