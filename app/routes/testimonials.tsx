@@ -58,12 +58,12 @@ export default function Testimonials() {
       <Navigation currentPath="/testimonials" />
 
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-primary-50 to-gold-50">
+      <section className="py-16 bg-gradient-to-br from-navy-50 to-gold-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="font-serif text-4xl lg:text-5xl font-bold text-primary-900 mb-6">
+          <h1 className="font-serif text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
             What Others Say
           </h1>
-          <p className="text-xl text-primary-700 leading-relaxed">
+          <p className="text-xl text-gray-700 leading-relaxed">
             Praise from literary critics, educators, and community leaders
           </p>
         </div>
@@ -72,10 +72,10 @@ export default function Testimonials() {
       {/* Featured Quote */}
       <section className="py-12 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <blockquote className="text-2xl lg:text-3xl font-serif italic text-primary-800 leading-relaxed mb-6">
+          <blockquote className="text-2xl lg:text-3xl font-serif italic text-navy-800 leading-relaxed mb-6">
             "Here's to strong women: may we know them, may we be them, may we raise them."
           </blockquote>
-          <cite className="text-lg text-primary-600">— Unknown</cite>
+          <cite className="text-lg text-gray-600">— Unknown</cite>
         </div>
       </section>
 
@@ -101,20 +101,20 @@ export default function Testimonials() {
 
                 {/* Author Info */}
                 <div className={`${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                  <div className="card bg-gradient-to-br from-primary-50 to-gold-50 border-primary-200">
+                  <div className="card bg-gradient-to-br from-navy-50 to-gold-50 border-navy-200">
                     <div className="text-center">
-                      <div className="w-16 h-16 bg-primary-600 rounded-full mx-auto mb-4 flex items-center justify-center">
+                      <div className="w-16 h-16 bg-navy-600 rounded-full mx-auto mb-4 flex items-center justify-center">
                         <span className="text-white font-serif text-xl font-bold">
                           {testimonial.name.split(' ').map(n => n[0]).join('').slice(0, 2)}
                         </span>
                       </div>
-                      <h3 className="font-serif text-lg font-bold text-primary-900 mb-2">
+                      <h3 className="font-serif text-lg font-bold text-navy-900 mb-2">
                         {testimonial.name}
                       </h3>
-                      <p className="text-sm text-primary-700 font-medium mb-1">
+                      <p className="text-sm text-gray-700 font-medium mb-1">
                         {testimonial.title}
                       </p>
-                      <p className="text-sm text-primary-600">
+                      <p className="text-sm text-gray-600">
                         {testimonial.institution}
                       </p>
                     </div>
@@ -140,12 +140,12 @@ export default function Testimonials() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-gradient-to-r from-primary-100 to-gold-100">
+      <section className="py-16 bg-gradient-to-r from-navy-100 to-gold-100">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="font-serif text-3xl font-bold text-primary-900 mb-6">
+          <h2 className="font-serif text-3xl font-bold text-navy-900 mb-6">
             Experience This Remarkable Story
           </h2>
-          <p className="text-lg text-primary-700 mb-8 leading-relaxed">
+          <p className="text-lg text-gray-700 mb-8 leading-relaxed">
             Join the readers who have been moved by Dr. Vibha's inspiring journey. 
             Order your copy today and discover a life lived with purpose, grace, and unwavering determination.
           </p>
@@ -164,7 +164,7 @@ export default function Testimonials() {
       <section className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="font-serif text-3xl font-bold text-primary-900 mb-4">More Praise</h2>
+            <h2 className="font-serif text-3xl font-bold text-navy-900 mb-4">More Praise</h2>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8">
@@ -172,7 +172,7 @@ export default function Testimonials() {
               <blockquote className="quote text-base mb-4">
                 "It is not often that someone comes along who is a true friend and intellectual. In Quest of Knowledge showcases Vibha as both a loyal trusted friend who was also witty."
               </blockquote>
-              <cite className="text-sm font-medium text-primary-700">
+              <cite className="text-sm font-medium text-gray-700">
                 — Neera Aspi Shah, MRPharmS.
               </cite>
             </div>
@@ -181,7 +181,7 @@ export default function Testimonials() {
               <blockquote className="quote text-base mb-4">
                 "Every chapter carries a journey, and in every journey, there is a lesson, inspiration and a legacy that spells out Vibha as though she came while fully aware of her role. A must-read."
               </blockquote>
-              <cite className="text-sm font-medium text-primary-700">
+              <cite className="text-sm font-medium text-gray-700">
                 — Obingo Wesonga, Editor and Founder of Vows Literary Consultants and Africa Reads Book Club
               </cite>
             </div>
@@ -190,21 +190,21 @@ export default function Testimonials() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary-900 text-white py-12">
+      <footer className="bg-navy-900 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h5 className="font-serif text-xl font-semibold mb-4">In Quest of Knowledge</h5>
-              <p className="text-primary-200 leading-relaxed italic">
+              <p className="text-gray-300 leading-relaxed italic">
                 "Praise from literary critics, educators, and community leaders"
               </p>
-              <p className="text-primary-300 text-sm mt-2">
+              <p className="text-gray-400 text-sm mt-2">
                 ISBN 978-9914-35-124-8 (Paperback) • ISBN 978-9914-35-125-5 (Hardback)
               </p>
             </div>
             <div>
               <h6 className="font-semibold mb-4">Contact</h6>
-              <div className="space-y-2 text-primary-200">
+              <div className="space-y-2 text-gray-300">
                 <p>P.O. Box 1801-00606, Nairobi</p>
                 <p>Email: info@inquestofknowledge.com</p>
                 <p>Website: www.inquestofknowledge.com</p>
@@ -213,13 +213,13 @@ export default function Testimonials() {
             <div>
               <h6 className="font-semibold mb-4">Quick Links</h6>
               <div className="space-y-2">
-                <Link to="/about" className="block text-primary-200 hover:text-white transition-colors">About the Book</Link>
-                <Link to="/testimonials" className="block text-primary-200 hover:text-white transition-colors">Testimonials</Link>
-                <Link to="/order" className="block text-primary-200 hover:text-white transition-colors">Order Now</Link>
+                <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About the Book</Link>
+                <Link to="/testimonials" className="block text-gray-300 hover:text-white transition-colors">Testimonials</Link>
+                <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Order Now</Link>
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-300">
+          <div className="border-t border-navy-700 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Dineshkumar Devchand Shah. All rights reserved. Copyright Board No.: RZ79824</p>
           </div>
         </div>

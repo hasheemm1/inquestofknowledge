@@ -17,20 +17,20 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
   const isActive = (path: string) => currentPath === path;
 
   return (
-    <nav className="bg-white/80 backdrop-blur-sm border-b border-primary-200 sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur-md border-b border-navy-200/30 sticky top-0 z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link 
             to="/" 
-            className="flex items-center space-x-3 hover:opacity-90 transition-opacity"
+            className="flex items-center space-x-3 group hover:scale-105 transition-all duration-300"
           >
             <img 
               src="/images/logo.png" 
               alt="In Quest of Knowledge Logo" 
               className="h-12 w-12"
             />
-            <span className="font-serif font-semibold text-xl text-primary-800">
+            <span className="font-serif font-semibold text-xl text-navy-800 group-hover:text-navy-600 transition-colors duration-300">
               In Quest of Knowledge
             </span>
           </Link>
@@ -41,17 +41,34 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
               <Link
                 key={item.path}
                 to={item.path}
-                className={`transition-colors ${
+                className={`relative py-2 px-1 font-medium transition-all duration-300 group ${
                   isActive(item.path)
-                    ? "text-primary-900 font-medium"
-                    : "text-primary-700 hover:text-primary-900"
+                    ? "text-navy-900"
+                    : "text-navy-700 hover:text-navy-900"
                 }`}
               >
-                {item.label}
+                <span className="relative z-10">{item.label}</span>
+                {/* Animated underline */}
+                <span 
+                  className={`absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-orange-500 to-gold-500 transition-all duration-300 ${
+                    isActive(item.path) 
+                      ? "w-full" 
+                      : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+                {/* Hover background */}
+                <span className="absolute inset-0 bg-navy-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
               </Link>
             ))}
-            <Link to="/order" className="btn-primary">
-              Order Book
+            <Link to="/order" className="btn-primary group ml-4 relative overflow-hidden">
+              <span className="relative z-10 flex items-center space-x-2">
+                <span>Order Book</span>
+                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
             </Link>
           </div>
 
@@ -59,7 +76,7 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-primary-700 hover:text-primary-900 hover:bg-primary-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-navy-700 hover:text-navy-900 hover:bg-navy-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-navy-500"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -100,16 +117,16 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
         </div>
 
         {/* Mobile Navigation Menu */}
-        <div className={`md:hidden ${isMenuOpen ? "block" : "hidden"}`}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-primary-200">
+        <div className={`md:hidden transition-all duration-300 ${isMenuOpen ? "block opacity-100" : "hidden opacity-0"}`}>
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white/95 backdrop-blur-md border-t border-navy-200">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`block px-3 py-2 rounded-md text-base transition-colors ${
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 group relative ${
                   isActive(item.path)
-                    ? "text-primary-900 font-medium bg-primary-50"
-                    : "text-primary-700 hover:text-primary-900 hover:bg-primary-50"
+                    ? "text-navy-900 bg-gradient-to-r from-navy-50 to-orange-50 border-l-4 border-orange-500"
+                    : "text-navy-700 hover:text-navy-900 hover:bg-navy-50 hover:border-l-4 hover:border-orange-300"
                 }`}
                 onClick={() => setIsMenuOpen(false)}
               >
