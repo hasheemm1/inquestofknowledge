@@ -24,4 +24,27 @@
   .quote {
     @apply text-lg italic text-gray-700 font-serif leading-relaxed;
   }
+  
+  .float-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .gradient-text {
+    background: linear-gradient(45deg, #1e3a8a, #f59e0b, #dc2626);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 4s ease infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(3deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }

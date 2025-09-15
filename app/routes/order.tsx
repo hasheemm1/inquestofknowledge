@@ -110,10 +110,10 @@ export default function Order() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl font-bold text-primary-900 mb-4">
+            <h1 className="font-serif text-4xl font-bold text-navy-900 mb-4">
               Order Your Copy
             </h1>
-            <p className="text-lg text-primary-600">
+            <p className="text-lg text-gray-600">
               Fill in your details below to order "In Quest of Knowledge"
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function Order() {
             {/* Order Form */}
             <div className="lg:col-span-2">
               <div className="card">
-                <h2 className="font-serif text-2xl font-bold text-primary-900 mb-6">
+                <h2 className="font-serif text-2xl font-bold text-navy-900 mb-6">
                   Shipping Information
                 </h2>
 
@@ -139,7 +139,7 @@ export default function Order() {
                   {/* Personal Information */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-primary-700 mb-2">
+                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-2">
                         First Name *
                       </label>
                       <input
@@ -147,8 +147,8 @@ export default function Order() {
                         id="firstName"
                         name="firstName"
                         defaultValue={actionData?.orderData?.firstName || ""}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                          actionData?.errors?.firstName ? 'border-red-300' : 'border-primary-300'
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                          actionData?.errors?.firstName ? 'border-red-300' : 'border-navy-300'
                         }`}
                         required
                       />
@@ -158,7 +158,7 @@ export default function Order() {
                     </div>
 
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-primary-700 mb-2">
+                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-2">
                         Last Name *
                       </label>
                       <input
@@ -166,8 +166,8 @@ export default function Order() {
                         id="lastName"
                         name="lastName"
                         defaultValue={actionData?.orderData?.lastName || ""}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                          actionData?.errors?.lastName ? 'border-red-300' : 'border-primary-300'
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                          actionData?.errors?.lastName ? 'border-red-300' : 'border-navy-300'
                         }`}
                         required
                       />
@@ -180,7 +180,7 @@ export default function Order() {
                   {/* Contact Information */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-primary-700 mb-2">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
                         Email Address *
                       </label>
                       <input
@@ -188,8 +188,8 @@ export default function Order() {
                         id="email"
                         name="email"
                         defaultValue={actionData?.orderData?.email || ""}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                          actionData?.errors?.email ? 'border-red-300' : 'border-primary-300'
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                          actionData?.errors?.email ? 'border-red-300' : 'border-navy-300'
                         }`}
                         required
                       />
@@ -199,7 +199,7 @@ export default function Order() {
                     </div>
 
                     <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-primary-700 mb-2">
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                         Phone Number *
                       </label>
                       <input
@@ -207,8 +207,8 @@ export default function Order() {
                         id="phone"
                         name="phone"
                         defaultValue={actionData?.orderData?.phone || ""}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                          actionData?.errors?.phone ? 'border-red-300' : 'border-primary-300'
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                          actionData?.errors?.phone ? 'border-red-300' : 'border-navy-300'
                         }`}
                         required
                       />
@@ -220,7 +220,7 @@ export default function Order() {
 
                   {/* Address */}
                   <div>
-                    <label htmlFor="address" className="block text-sm font-medium text-primary-700 mb-2">
+                    <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
                       Street Address *
                     </label>
                     <textarea
@@ -228,8 +228,8 @@ export default function Order() {
                       name="address"
                       rows={3}
                       defaultValue={actionData?.orderData?.address || ""}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                        actionData?.errors?.address ? 'border-red-300' : 'border-primary-300'
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                        actionData?.errors?.address ? 'border-red-300' : 'border-navy-300'
                       }`}
                       required
                     />
@@ -240,7 +240,7 @@ export default function Order() {
 
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label htmlFor="city" className="block text-sm font-medium text-primary-700 mb-2">
+                      <label htmlFor="city" className="block text-sm font-medium text-gray-700 mb-2">
                         City *
                       </label>
                       <input
@@ -248,8 +248,8 @@ export default function Order() {
                         id="city"
                         name="city"
                         defaultValue={actionData?.orderData?.city || ""}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                          actionData?.errors?.city ? 'border-red-300' : 'border-primary-300'
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                          actionData?.errors?.city ? 'border-red-300' : 'border-navy-300'
                         }`}
                         required
                       />
@@ -259,7 +259,7 @@ export default function Order() {
                     </div>
 
                     <div>
-                      <label htmlFor="postalCode" className="block text-sm font-medium text-primary-700 mb-2">
+                      <label htmlFor="postalCode" className="block text-sm font-medium text-gray-700 mb-2">
                         Postal Code *
                       </label>
                       <input
@@ -267,8 +267,8 @@ export default function Order() {
                         id="postalCode"
                         name="postalCode"
                         defaultValue={actionData?.orderData?.postalCode || ""}
-                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                          actionData?.errors?.postalCode ? 'border-red-300' : 'border-primary-300'
+                        className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                          actionData?.errors?.postalCode ? 'border-red-300' : 'border-navy-300'
                         }`}
                         required
                       />
@@ -301,13 +301,13 @@ export default function Order() {
               </div>
               
               <div className="card">
-                <h3 className="font-serif text-xl font-bold text-primary-900 mb-4">
+                <h3 className="font-serif text-xl font-bold text-navy-900 mb-4">
                   Order Summary
                 </h3>
 
                 {/* Edition Selection */}
                 <div className="space-y-3 mb-6">
-                  <label className="block text-sm font-medium text-primary-700">
+                  <label className="block text-sm font-medium text-gray-700">
                     Edition
                   </label>
                   <div className="space-y-2">
@@ -317,9 +317,9 @@ export default function Order() {
                         value="paperback"
                         checked={edition === 'paperback'}
                         onChange={(e) => setEdition(e.target.value as 'paperback')}
-                        className="mr-3 text-primary-600"
+                        className="mr-3 text-gray-600"
                       />
-                      <span className="text-primary-700">Paperback - KSh 2,500</span>
+                      <span className="text-gray-700">Paperback - KSh 2,500</span>
                     </label>
                     <label className="flex items-center">
                       <input
@@ -327,23 +327,23 @@ export default function Order() {
                         value="hardback"
                         checked={edition === 'hardback'}
                         onChange={(e) => setEdition(e.target.value as 'hardback')}
-                        className="mr-3 text-primary-600"
+                        className="mr-3 text-gray-600"
                       />
-                      <span className="text-primary-700">Hardback - KSh 3,500</span>
+                      <span className="text-gray-700">Hardback - KSh 3,500</span>
                     </label>
                   </div>
                 </div>
 
                 {/* Quantity */}
                 <div className="mb-6">
-                  <label htmlFor="quantity" className="block text-sm font-medium text-primary-700 mb-2">
+                  <label htmlFor="quantity" className="block text-sm font-medium text-gray-700 mb-2">
                     Quantity
                   </label>
                   <select
                     id="quantity"
                     value={quantity}
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
-                    className="w-full px-4 py-3 border border-primary-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                    className="w-full px-4 py-3 border border-navy-300 rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500"
                   >
                     {[1, 2, 3, 4, 5].map((num) => (
                       <option key={num} value={num}>
@@ -353,8 +353,8 @@ export default function Order() {
                   </select>
                 </div>
 
-                <div className="border-t border-primary-200 pt-4">
-                  <div className="flex justify-between items-center text-lg font-semibold text-primary-900">
+                <div className="border-t border-navy-200 pt-4">
+                  <div className="flex justify-between items-center text-lg font-semibold text-navy-900">
                     <span>Total:</span>
                     <span>KSh {total.toLocaleString()}</span>
                   </div>
@@ -362,11 +362,11 @@ export default function Order() {
               </div>
 
               <div className="card bg-gold-50 border-gold-200">
-                <h4 className="font-medium text-primary-900 mb-2">Payment Method</h4>
-                <p className="text-sm text-primary-700 mb-3">
+                <h4 className="font-medium text-navy-900 mb-2">Payment Method</h4>
+                <p className="text-sm text-gray-700 mb-3">
                   We accept M-Pesa payments. After submitting your order, you'll receive payment instructions.
                 </p>
-                <div className="flex items-center text-primary-600">
+                <div className="flex items-center text-gray-600">
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                   </svg>
@@ -379,21 +379,21 @@ export default function Order() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary-900 text-white py-12">
+      <footer className="bg-navy-900 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h5 className="font-serif text-xl font-semibold mb-4">In Quest of Knowledge</h5>
-              <p className="text-primary-200 leading-relaxed italic">
+              <p className="text-gray-300 leading-relaxed italic">
                 "Available in paperback and hardback editions"
               </p>
-              <p className="text-primary-300 text-sm mt-2">
+              <p className="text-gray-400 text-sm mt-2">
                 Secure M-Pesa payments • Fast delivery across Kenya
               </p>
             </div>
             <div>
               <h6 className="font-semibold mb-4">Contact</h6>
-              <div className="space-y-2 text-primary-200">
+              <div className="space-y-2 text-gray-300">
                 <p>P.O. Box 1801-00606, Nairobi</p>
                 <p>Email: info@inquestofknowledge.com</p>
                 <p>Website: www.inquestofknowledge.com</p>
@@ -402,13 +402,13 @@ export default function Order() {
             <div>
               <h6 className="font-semibold mb-4">Quick Links</h6>
               <div className="space-y-2">
-                <Link to="/about" className="block text-primary-200 hover:text-white transition-colors">About the Book</Link>
-                <Link to="/testimonials" className="block text-primary-200 hover:text-white transition-colors">Testimonials</Link>
-                <Link to="/order" className="block text-primary-200 hover:text-white transition-colors">Order Now</Link>
+                <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About the Book</Link>
+                <Link to="/testimonials" className="block text-gray-300 hover:text-white transition-colors">Testimonials</Link>
+                <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Order Now</Link>
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-300">
+          <div className="border-t border-navy-700 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Dineshkumar Devchand Shah. All rights reserved. Copyright Board No.: RZ79824</p>
           </div>
         </div>

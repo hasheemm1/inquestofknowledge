@@ -50,10 +50,10 @@ export default function Confirmation() {
               </svg>
             </div>
             
-            <h1 className="font-serif text-4xl font-bold text-primary-900 mb-4">
+            <h1 className="font-serif text-4xl font-bold text-navy-900 mb-4">
               Order Confirmed!
             </h1>
-            <p className="text-lg text-primary-600">
+            <p className="text-lg text-gray-600">
               Thank you for your order. We have received your M-Pesa payment confirmation.
             </p>
           </div>
@@ -61,35 +61,35 @@ export default function Confirmation() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Order Details */}
             <div className="card">
-              <h2 className="font-serif text-2xl font-bold text-primary-900 mb-6">
+              <h2 className="font-serif text-2xl font-bold text-navy-900 mb-6">
                 Order Details
               </h2>
               
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
-                    <span className="text-primary-600">Order ID:</span>
-                    <p className="font-mono text-primary-900 font-medium">{order.id}</p>
+                    <span className="text-gray-600">Order ID:</span>
+                    <p className="font-mono text-navy-900 font-medium">{order.id}</p>
                   </div>
                   <div>
-                    <span className="text-primary-600">Status:</span>
+                    <span className="text-gray-600">Status:</span>
                     <p className="text-green-600 font-medium capitalize">Payment Confirmed</p>
                   </div>
                   <div>
-                    <span className="text-primary-600">Edition:</span>
-                    <p className="text-primary-900 font-medium capitalize">{order.edition}</p>
+                    <span className="text-gray-600">Edition:</span>
+                    <p className="text-navy-900 font-medium capitalize">{order.edition}</p>
                   </div>
                   <div>
-                    <span className="text-primary-600">Quantity:</span>
-                    <p className="text-primary-900 font-medium">{order.quantity}</p>
+                    <span className="text-gray-600">Quantity:</span>
+                    <p className="text-navy-900 font-medium">{order.quantity}</p>
                   </div>
                   <div>
-                    <span className="text-primary-600">M-Pesa Code:</span>
-                    <p className="font-mono text-primary-900 font-medium">{order.mpesaCode}</p>
+                    <span className="text-gray-600">M-Pesa Code:</span>
+                    <p className="font-mono text-navy-900 font-medium">{order.mpesaCode}</p>
                   </div>
                   <div>
-                    <span className="text-primary-600">Total Paid:</span>
-                    <p className="text-primary-900 font-bold">KSh {order.totalAmount.toLocaleString()}</p>
+                    <span className="text-gray-600">Total Paid:</span>
+                    <p className="text-navy-900 font-bold">KSh {order.totalAmount.toLocaleString()}</p>
                   </div>
                 </div>
               </div>
@@ -97,26 +97,26 @@ export default function Confirmation() {
 
             {/* Shipping Information */}
             <div className="card">
-              <h2 className="font-serif text-2xl font-bold text-primary-900 mb-6">
+              <h2 className="font-serif text-2xl font-bold text-navy-900 mb-6">
                 Shipping Information
               </h2>
               
               <div className="space-y-4 text-sm">
                 <div>
-                  <span className="text-primary-600">Customer:</span>
-                  <p className="text-primary-900 font-medium">{order.firstName} {order.lastName}</p>
+                  <span className="text-gray-600">Customer:</span>
+                  <p className="text-navy-900 font-medium">{order.firstName} {order.lastName}</p>
                 </div>
                 <div>
-                  <span className="text-primary-600">Email:</span>
-                  <p className="text-primary-900">{order.email}</p>
+                  <span className="text-gray-600">Email:</span>
+                  <p className="text-navy-900">{order.email}</p>
                 </div>
                 <div>
-                  <span className="text-primary-600">Phone:</span>
-                  <p className="text-primary-900">{order.phone}</p>
+                  <span className="text-gray-600">Phone:</span>
+                  <p className="text-navy-900">{order.phone}</p>
                 </div>
                 <div>
-                  <span className="text-primary-600">Shipping Address:</span>
-                  <div className="text-primary-900">
+                  <span className="text-gray-600">Shipping Address:</span>
+                  <div className="text-navy-900">
                     <p>{order.address}</p>
                     <p>{order.city}, {order.postalCode}</p>
                   </div>
@@ -127,38 +127,38 @@ export default function Confirmation() {
 
           {/* Next Steps */}
           <div className="mt-12">
-            <div className="card bg-gradient-to-br from-primary-50 to-gold-50 border-primary-200">
-              <h3 className="font-serif text-xl font-bold text-primary-900 mb-6">
+            <div className="card bg-gradient-to-br from-navy-50 to-gold-50 border-navy-200">
+              <h3 className="font-serif text-xl font-bold text-navy-900 mb-6">
                 What Happens Next?
               </h3>
               
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <div className="w-12 h-12 bg-navy-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-white font-bold">1</span>
                   </div>
-                  <h4 className="font-semibold text-primary-900 mb-2">Processing</h4>
-                  <p className="text-sm text-primary-700">
+                  <h4 className="font-semibold text-navy-900 mb-2">Processing</h4>
+                  <p className="text-sm text-gray-700">
                     We'll verify your payment and prepare your order for shipping.
                   </p>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <div className="w-12 h-12 bg-navy-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-white font-bold">2</span>
                   </div>
-                  <h4 className="font-semibold text-primary-900 mb-2">Shipping</h4>
-                  <p className="text-sm text-primary-700">
+                  <h4 className="font-semibold text-navy-900 mb-2">Shipping</h4>
+                  <p className="text-sm text-gray-700">
                     Your book will be carefully packaged and shipped to your address.
                   </p>
                 </div>
                 
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <div className="w-12 h-12 bg-navy-600 rounded-full flex items-center justify-center mx-auto mb-3">
                     <span className="text-white font-bold">3</span>
                   </div>
-                  <h4 className="font-semibold text-primary-900 mb-2">Delivery</h4>
-                  <p className="text-sm text-primary-700">
+                  <h4 className="font-semibold text-navy-900 mb-2">Delivery</h4>
+                  <p className="text-sm text-gray-700">
                     You'll receive your copy within 3-5 business days in Nairobi.
                   </p>
                 </div>
@@ -175,10 +175,10 @@ export default function Confirmation() {
 
           {/* Contact Information */}
           <div className="mt-8 text-center">
-            <h3 className="font-serif text-xl font-bold text-primary-900 mb-4">
+            <h3 className="font-serif text-xl font-bold text-navy-900 mb-4">
               Questions About Your Order?
             </h3>
-            <p className="text-primary-700 mb-6">
+            <p className="text-gray-700 mb-6">
               If you have any questions or concerns about your order, please don't hesitate to contact us.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -196,33 +196,33 @@ export default function Confirmation() {
 
           {/* Quote */}
           <div className="mt-12 text-center">
-            <blockquote className="text-xl lg:text-2xl font-serif italic text-primary-800 leading-relaxed mb-4">
+            <blockquote className="text-xl lg:text-2xl font-serif italic text-navy-800 leading-relaxed mb-4">
               "Don't simply dream; discover ways to stay your goals."
             </blockquote>
-            <div className="text-sm text-primary-700 mb-2">
+            <div className="text-sm text-gray-700 mb-2">
               <p className="font-serif text-base" lang="gu">સપનાઓ દેખાવા નહીં, એને પૂરા કરવા જીવવું શીખો.</p>
             </div>
-            <cite className="text-primary-600">— Dr. Vibha Dineshkumar Shah</cite>
+            <cite className="text-gray-600">— Dr. Vibha Dineshkumar Shah</cite>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary-900 text-white py-12">
+      <footer className="bg-navy-900 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h5 className="font-serif text-xl font-semibold mb-4">In Quest of Knowledge</h5>
-              <p className="text-primary-200 leading-relaxed italic">
+              <p className="text-gray-300 leading-relaxed italic">
                 "Your order has been confirmed - thank you for your purchase"
               </p>
-              <p className="text-primary-300 text-sm mt-2">
+              <p className="text-gray-400 text-sm mt-2">
                 Delivery within 3-5 business days • Order tracking available
               </p>
             </div>
             <div>
               <h6 className="font-semibold mb-4">Contact</h6>
-              <div className="space-y-2 text-primary-200">
+              <div className="space-y-2 text-gray-300">
                 <p>P.O. Box 1801-00606, Nairobi</p>
                 <p>Email: info@inquestofknowledge.com</p>
                 <p>Website: www.inquestofknowledge.com</p>
@@ -231,13 +231,13 @@ export default function Confirmation() {
             <div>
               <h6 className="font-semibold mb-4">Quick Links</h6>
               <div className="space-y-2">
-                <Link to="/about" className="block text-primary-200 hover:text-white transition-colors">About the Book</Link>
-                <Link to="/testimonials" className="block text-primary-200 hover:text-white transition-colors">Testimonials</Link>
-                <Link to="/order" className="block text-primary-200 hover:text-white transition-colors">Order Now</Link>
+                <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About the Book</Link>
+                <Link to="/testimonials" className="block text-gray-300 hover:text-white transition-colors">Testimonials</Link>
+                <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Order Now</Link>
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-300">
+          <div className="border-t border-navy-700 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Dineshkumar Devchand Shah. All rights reserved. Copyright Board No.: RZ79824</p>
           </div>
         </div>

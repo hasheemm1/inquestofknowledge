@@ -88,10 +88,10 @@ export default function Payment() {
       <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h1 className="font-serif text-4xl font-bold text-primary-900 mb-4">
+            <h1 className="font-serif text-4xl font-bold text-navy-900 mb-4">
               Complete Your Payment
             </h1>
-            <p className="text-lg text-primary-600">
+            <p className="text-lg text-gray-600">
               Please make your M-Pesa payment and provide the confirmation details below
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function Payment() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Payment Instructions */}
             <div className="card">
-              <h2 className="font-serif text-2xl font-bold text-primary-900 mb-6">
+              <h2 className="font-serif text-2xl font-bold text-navy-900 mb-6">
                 M-Pesa Payment Instructions
               </h2>
 
@@ -137,7 +137,7 @@ export default function Payment() {
             {/* Confirmation Form */}
             <div className="space-y-6">
               <div className="card">
-                <h3 className="font-serif text-xl font-bold text-primary-900 mb-6">
+                <h3 className="font-serif text-xl font-bold text-navy-900 mb-6">
                   Payment Confirmation
                 </h3>
 
@@ -151,7 +151,7 @@ export default function Payment() {
                   <input type="hidden" name="orderId" value={order.id} />
 
                   <div>
-                    <label htmlFor="mpesaCode" className="block text-sm font-medium text-primary-700 mb-2">
+                    <label htmlFor="mpesaCode" className="block text-sm font-medium text-gray-700 mb-2">
                       M-Pesa Confirmation Code *
                     </label>
                     <input
@@ -160,21 +160,21 @@ export default function Payment() {
                       name="mpesaCode"
                       placeholder="e.g., QA72HGKL9M"
                       defaultValue={actionData?.paymentData?.mpesaCode || ""}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                        actionData?.errors?.mpesaCode ? 'border-red-300' : 'border-primary-300'
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                        actionData?.errors?.mpesaCode ? 'border-red-300' : 'border-navy-300'
                       }`}
                       required
                     />
                     {actionData?.errors?.mpesaCode && (
                       <p className="mt-1 text-sm text-red-600">{actionData.errors.mpesaCode}</p>
                     )}
-                    <p className="mt-1 text-sm text-primary-600">
+                    <p className="mt-1 text-sm text-gray-600">
                       This is the code you received in your M-Pesa confirmation SMS
                     </p>
                   </div>
 
                   <div>
-                    <label htmlFor="mpesaPhone" className="block text-sm font-medium text-primary-700 mb-2">
+                    <label htmlFor="mpesaPhone" className="block text-sm font-medium text-gray-700 mb-2">
                       M-Pesa Phone Number *
                     </label>
                     <input
@@ -183,15 +183,15 @@ export default function Payment() {
                       name="mpesaPhone"
                       placeholder="254XXXXXXXXX"
                       defaultValue={actionData?.paymentData?.mpesaPhone || ""}
-                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 ${
-                        actionData?.errors?.mpesaPhone ? 'border-red-300' : 'border-primary-300'
+                      className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-navy-500 focus:border-navy-500 ${
+                        actionData?.errors?.mpesaPhone ? 'border-red-300' : 'border-navy-300'
                       }`}
                       required
                     />
                     {actionData?.errors?.mpesaPhone && (
                       <p className="mt-1 text-sm text-red-600">{actionData.errors.mpesaPhone}</p>
                     )}
-                    <p className="mt-1 text-sm text-primary-600">
+                    <p className="mt-1 text-sm text-gray-600">
                       The phone number you used to make the M-Pesa payment
                     </p>
                   </div>
@@ -208,29 +208,29 @@ export default function Payment() {
 
               {/* Order Summary */}
               <div className="card">
-                <h3 className="font-serif text-xl font-bold text-primary-900 mb-4">
+                <h3 className="font-serif text-xl font-bold text-navy-900 mb-4">
                   Order Summary
                 </h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-primary-600">Order ID:</span>
-                    <span className="font-mono text-primary-800">{order.id}</span>
+                    <span className="text-gray-600">Order ID:</span>
+                    <span className="font-mono text-navy-800">{order.id}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-primary-600">Edition:</span>
-                    <span className="text-primary-800 capitalize">{order.edition}</span>
+                    <span className="text-gray-600">Edition:</span>
+                    <span className="text-navy-800 capitalize">{order.edition}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-primary-600">Quantity:</span>
-                    <span className="text-primary-800">{order.quantity}</span>
+                    <span className="text-gray-600">Quantity:</span>
+                    <span className="text-navy-800">{order.quantity}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-primary-600">Customer:</span>
-                    <span className="text-primary-800">{order.firstName} {order.lastName}</span>
+                    <span className="text-gray-600">Customer:</span>
+                    <span className="text-navy-800">{order.firstName} {order.lastName}</span>
                   </div>
-                  <div className="border-t border-primary-200 pt-3 flex justify-between font-semibold">
-                    <span className="text-primary-800">Total Amount:</span>
-                    <span className="text-primary-900">KSh {order.totalAmount.toLocaleString()}</span>
+                  <div className="border-t border-navy-200 pt-3 flex justify-between font-semibold">
+                    <span className="text-navy-800">Total Amount:</span>
+                    <span className="text-navy-900">KSh {order.totalAmount.toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -240,21 +240,21 @@ export default function Payment() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary-900 text-white py-12">
+      <footer className="bg-navy-900 text-white py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
               <h5 className="font-serif text-xl font-semibold mb-4">In Quest of Knowledge</h5>
-              <p className="text-primary-200 leading-relaxed italic">
+              <p className="text-gray-300 leading-relaxed italic">
                 "Complete your purchase with M-Pesa - Kenya's trusted payment method"
               </p>
-              <p className="text-primary-300 text-sm mt-2">
+              <p className="text-gray-400 text-sm mt-2">
                 Orders processed within 24 hours • Copyright Board No.: RZ79824
               </p>
             </div>
             <div>
               <h6 className="font-semibold mb-4">Contact</h6>
-              <div className="space-y-2 text-primary-200">
+              <div className="space-y-2 text-gray-300">
                 <p>P.O. Box 1801-00606, Nairobi</p>
                 <p>Email: info@inquestofknowledge.com</p>
                 <p>Website: www.inquestofknowledge.com</p>
@@ -263,13 +263,13 @@ export default function Payment() {
             <div>
               <h6 className="font-semibold mb-4">Quick Links</h6>
               <div className="space-y-2">
-                <Link to="/about" className="block text-primary-200 hover:text-white transition-colors">About the Book</Link>
-                <Link to="/testimonials" className="block text-primary-200 hover:text-white transition-colors">Testimonials</Link>
-                <Link to="/order" className="block text-primary-200 hover:text-white transition-colors">Order Now</Link>
+                <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About the Book</Link>
+                <Link to="/testimonials" className="block text-gray-300 hover:text-white transition-colors">Testimonials</Link>
+                <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Order Now</Link>
               </div>
             </div>
           </div>
-          <div className="border-t border-primary-700 mt-8 pt-8 text-center text-primary-300">
+          <div className="border-t border-navy-700 mt-8 pt-8 text-center text-gray-400">
             <p>&copy; 2025 Dineshkumar Devchand Shah. All rights reserved. Copyright Board No.: RZ79824</p>
           </div>
         </div>
