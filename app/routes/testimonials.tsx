@@ -131,7 +131,7 @@ export default function Testimonials() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="flex justify-center mb-8">
             <img 
-              src="/images/cover.png" 
+              src="/images/cover.jpg" 
               alt="In Quest of Knowledge - Book Cover"
               className="w-64 h-auto rounded-lg shadow-lg border border-gray-200 transform hover:scale-105 transition-transform duration-300"
             />

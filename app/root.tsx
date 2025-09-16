@@ -32,14 +32,14 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="In Quest of Knowledge" />
         <meta property="og:locale" content="en_US" />
-        <meta property="og:image" content="/images/cover.png" />
+        <meta property="og:image" content="/images/cover.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="In Quest of Knowledge - A Biography of Dr. Vibha Dineshkumar Shah" />
         
         {/* Twitter Card Meta Tags */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="/images/cover.png" />
+        <meta name="twitter:image" content="/images/cover.jpg" />
         <meta name="twitter:image:alt" content="In Quest of Knowledge - A Biography of Dr. Vibha Dineshkumar Shah" />
         
         {/* Structured Data */}
@@ -73,7 +73,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             "inLanguage": "en",
             "genre": "Biography",
             "bookFormat": "https://schema.org/Paperback",
-            "image": "/images/cover.png",
+            "image": "/images/cover.jpg",
             "url": "https://www.inquestofknowledge.com",
             "offers": [
               {

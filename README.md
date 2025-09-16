@@ -32,9 +32,9 @@ A beautiful, minimal website for the biography "In Quest of Knowledge" by Dr. Vi
 ## Assets
 
 ### Book Cover Image
-The actual book cover (`cover.png`) is used throughout the website and is located in:
-- Source: `C:\_workspace\Repos\inquestofknowledge\images\cover.png`
-- Website: `website/public/images/cover.png`
+The actual book cover (`cover.jpg`) is used throughout the website and is located in:
+- Source: `C:\_workspace\Repos\inquestofknowledge\images\cover.jpg`
+- Website: `website/public/images/cover.jpg`
 
 The image is automatically displayed on:
 - Homepage hero section with 3D rotation effect

@@ -80,7 +80,7 @@ export default function About() {
               {/* Book Cover */}
               <div className="flex justify-center">
                 <img 
-                  src="/images/cover.png" 
+                  src="/images/cover.jpg" 
                   alt="In Quest of Knowledge - Book Cover"
                   className="w-64 h-auto rounded-lg shadow-lg border border-gray-200"
                 />

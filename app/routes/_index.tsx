@@ -23,7 +23,7 @@ export default function Index() {
               <div className="relative">
                 <div className="transform rotate-3 hover:rotate-0 transition-transform duration-300">
                   <img 
-                    src="/images/cover.png" 
+                    src="/images/cover.jpg" 
                     alt="In Quest of Knowledge - A Biography of Late Dr Vibha Dineshkumar Shah"
                     className="w-80 h-auto rounded-lg shadow-2xl border border-gray-200"
                   />
