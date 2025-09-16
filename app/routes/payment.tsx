@@ -106,11 +106,30 @@ export default function Payment() {
               <div className="space-y-6">
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                   <h3 className="font-semibold text-green-900 mb-4">Step 1: Make M-Pesa Payment</h3>
-                  <div className="space-y-2 text-green-800">
-                    <p><strong>Pay Bill Number:</strong> 247247</p>
-                    <p><strong>Account Number:</strong> INQUESTOFKNOWLEDGE</p>
-                    <p><strong>Amount:</strong> KSh {order.totalAmount.toLocaleString()}</p>
+                  <div className="bg-white rounded-lg p-4 mb-4 border border-green-300">
+                    <h4 className="font-medium text-green-900 mb-3">LIPA NA I&M Bank</h4>
+                    <div className="space-y-2 text-green-800">
+                      <div className="flex justify-between">
+                        <span><strong>Paybill Number:</strong></span>
+                        <span className="font-mono font-bold">542542</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span><strong>Account Number:</strong></span>
+                        <span className="font-mono font-bold">697697</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span><strong>Account Name:</strong></span>
+                        <span className="font-bold">DINESHKUMAR D. SHAH</span>
+                      </div>
+                      <div className="flex justify-between border-t border-green-200 pt-2 mt-3">
+                        <span><strong>Amount:</strong></span>
+                        <span className="font-bold text-lg">KSh {order.totalAmount.toLocaleString()}</span>
+                      </div>
+                    </div>
                   </div>
+                  <p className="text-sm text-green-700">
+                    Go to M-Pesa → Lipa na M-Pesa → Pay Bill → Enter the details above
+                  </p>
                 </div>
 
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">

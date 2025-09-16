@@ -362,15 +362,31 @@ export default function Order() {
               </div>
 
               <div className="card bg-gold-50 border-gold-200">
-                <h4 className="font-medium text-navy-900 mb-2">Payment Method</h4>
-                <p className="text-sm text-gray-700 mb-3">
-                  We accept M-Pesa payments. After submitting your order, you'll receive payment instructions.
-                </p>
-                <div className="flex items-center text-gray-600">
-                  <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                  </svg>
-                  <span className="text-sm">Secure M-Pesa Payment</span>
+                <h4 className="font-medium text-navy-900 mb-4">M-Pesa Payment Details</h4>
+                <div className="space-y-3 mb-4">
+                  <div className="flex justify-between items-center py-2 border-b border-gold-200">
+                    <span className="font-medium text-gray-700">Paybill Number:</span>
+                    <span className="font-mono text-navy-900 font-bold text-lg">542542</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-gold-200">
+                    <span className="font-medium text-gray-700">Account Number:</span>
+                    <span className="font-mono text-navy-900 font-bold text-lg">697697</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2">
+                    <span className="font-medium text-gray-700">Account Name:</span>
+                    <span className="text-navy-900 font-bold">DINESHKUMAR D. SHAH</span>
+                  </div>
+                </div>
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                  <div className="flex items-start">
+                    <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                    </svg>
+                    <div>
+                      <p className="text-sm text-blue-800 font-medium">LIPA NA I&M Bank</p>
+                      <p className="text-xs text-blue-600 mt-1">Use these details to complete your M-Pesa payment after placing your order.</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
