@@ -7,8 +7,11 @@ export interface OrderData {
   address: string;
   city: string;
   postalCode: string;
+  deliveryLocation: 'nairobi' | 'kenya';
   edition: 'paperback' | 'hardback';
   quantity: number;
+  bookAmount: number;
+  deliveryFee: number;
   totalAmount: number;
   mpesaCode?: string;
   mpesaPhone?: string;
@@ -25,6 +28,7 @@ export interface FormErrors {
   address?: string;
   city?: string;
   postalCode?: string;
+  deliveryLocation?: string;
   mpesaCode?: string;
   mpesaPhone?: string;
 }

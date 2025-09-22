@@ -47,11 +47,24 @@ export default function Index() {
                 </p>
               </div>
 
+              {/* Launch Event Announcement */}
+              <div className="bg-gold-400 text-navy-900 px-6 py-4 rounded-lg border border-gold-500 mb-6">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="font-bold text-lg">📅 Book Launch Event</div>
+                    <div className="text-sm">September 27th • Sarit Center • FREE Entry • Live on YouTube</div>
+                  </div>
+                  <Link to="/launch" className="bg-navy-900 text-white px-4 py-2 rounded-lg hover:bg-navy-800 transition-colors font-semibold">
+                    Learn More
+                  </Link>
+                </div>
+              </div>
+
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/order" className="btn-primary text-center">
+                <Link to="/order" className="btn-primary text-center block" prefetch="intent">
                   Order Your Copy
                 </Link>
-                <Link to="/about" className="btn-secondary text-center">
+                <Link to="/about" className="btn-secondary text-center block">
                   Learn More
                 </Link>
               </div>
@@ -82,26 +95,30 @@ export default function Index() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <div className="card text-center group hover:shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden">
+            <div className="card text-center">
               <h4 className="font-serif text-xl font-semibold text-gray-900 mb-2">Paperback Edition</h4>
               <p className="text-gray-700 mb-4 font-medium">ISBN 978-9914-35-124-8</p>
-              <div className="text-3xl font-bold text-navy-800 mb-4">KSh 2,500</div>
-              <Link to="/order?edition=paperback" className="btn-primary w-full">
+              <div className="mb-4">
+                <div className="text-lg text-gray-500 line-through">KSh 2,950</div>
+                <div className="text-3xl font-bold text-navy-800">KSh 2,500</div>
+                <div className="text-sm text-green-600 font-medium">Introductory Price</div>
+              </div>
+              <Link to="/order?edition=paperback" className="btn-primary w-full block" prefetch="intent">
                 Order Paperback
               </Link>
-              {/* Decorative corner */}
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-gold-400/20 to-transparent rounded-tr-xl"></div>
             </div>
             
-            <div className="card text-center group hover:shadow-2xl hover:scale-105 transition-all duration-300 relative overflow-hidden">
+            <div className="card text-center">
               <h4 className="font-serif text-xl font-semibold text-gray-900 mb-2">Hardback Edition</h4>
               <p className="text-gray-700 mb-4 font-medium">ISBN 978-9914-35-125-5</p>
-              <div className="text-3xl font-bold text-navy-800 mb-4">KSh 3,500</div>
-              <Link to="/order?edition=hardback" className="btn-primary w-full">
+              <div className="mb-4">
+                <div className="text-lg text-gray-500 line-through">KSh 3,500</div>
+                <div className="text-3xl font-bold text-navy-800">KSh 3,000</div>
+                <div className="text-sm text-green-600 font-medium">Introductory Price</div>
+              </div>
+              <Link to="/order?edition=hardback" className="btn-primary w-full block" prefetch="intent">
                 Order Hardback
               </Link>
-              {/* Decorative corner */}
-              <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-gold-400/20 to-transparent rounded-tr-xl"></div>
             </div>
           </div>
         </div>
@@ -233,6 +250,7 @@ export default function Index() {
             <div>
               <h6 className="font-semibold mb-4">Quick Links</h6>
               <div className="space-y-2">
+                <Link to="/launch" className="block text-gold-300 hover:text-white transition-colors font-semibold">🎉 Launch Event</Link>
                 <Link to="/about" className="block text-gray-300 hover:text-white transition-colors">About the Book</Link>
                 <Link to="/testimonials" className="block text-gray-300 hover:text-white transition-colors">Testimonials</Link>
                 <Link to="/order" className="block text-gray-300 hover:text-white transition-colors">Order Now</Link>

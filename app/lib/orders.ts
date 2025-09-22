@@ -1,5 +1,6 @@
 import { db } from './firebase';
 import type { OrderData } from '~/types/order';
+import { PRICING, DELIVERY_FEES } from './pricing';
 
 export async function createOrder(orderData: Omit<OrderData, 'id' | 'createdAt' | 'updatedAt'>): Promise<string> {
   try {
@@ -46,11 +47,5 @@ export async function getOrder(orderId: string): Promise<OrderData | null> {
   }
 }
 
-export function calculateTotal(edition: 'paperback' | 'hardback', quantity: number): number {
-  const prices = {
-    paperback: 2500,
-    hardback: 3500,
-  };
-  
-  return prices[edition] * quantity;
-}
+// Re-export pricing constants and functions
+export { PRICING, DELIVERY_FEES, calculateTotal } from './pricing';

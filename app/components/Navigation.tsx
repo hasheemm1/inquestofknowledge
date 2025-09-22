@@ -11,6 +11,7 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
   const navItems = [
     { path: "/", label: "Home" },
     { path: "/about", label: "About" },
+    { path: "/launch", label: "Launch Event" },
     { path: "/testimonials", label: "Testimonials" },
   ];
 
@@ -60,15 +61,8 @@ export default function Navigation({ currentPath = "/" }: NavigationProps) {
                 <span className="absolute inset-0 bg-navy-50 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></span>
               </Link>
             ))}
-            <Link to="/order" className="btn-primary group ml-4 relative overflow-hidden">
-              <span className="relative z-10 flex items-center space-x-2">
-                <span>Order Book</span>
-                <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                </svg>
-              </span>
-              {/* Shimmer effect */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+            <Link to="/order" className="btn-primary group ml-4" prefetch="intent">
+              Order Book
             </Link>
           </div>
 
