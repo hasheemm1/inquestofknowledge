@@ -55,7 +55,7 @@ export default function Index() {
                     <div className="text-sm mt-1">September 27th • Sarit Center • FREE Entry • Live on YouTube</div>
                   </div>
                   <Link to="/launch" className="bg-navy-900 text-white px-4 py-2 rounded-lg hover:bg-navy-800 transition-colors font-semibold text-center whitespace-nowrap">
-                    Learn More
+                    Event Details
                   </Link>
                 </div>
               </div>
