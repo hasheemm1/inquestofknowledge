@@ -65,7 +65,7 @@ export default function Confirmation() {
                 Order Details
               </h2>
               
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div>
                     <span className="text-gray-600">Order ID:</span>
@@ -88,8 +88,67 @@ export default function Confirmation() {
                     <p className="font-mono text-navy-900 font-medium">{order.mpesaCode}</p>
                   </div>
                   <div>
-                    <span className="text-gray-600">Total Paid:</span>
-                    <p className="text-navy-900 font-bold">KSh {order.totalAmount.toLocaleString()}</p>
+                    <span className="text-gray-600">Delivery Location:</span>
+                    <p className="text-navy-900 font-medium">
+                      {order.deliveryLocation === 'nairobi' ? 'Nairobi' : 'Rest of Kenya'}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Order Summary Breakdown */}
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="text-sm font-semibold text-gray-800 mb-3">Order Summary</h4>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">
+                        {order.edition === 'paperback' ? 'Paperback' : 'Hardback'} Edition ({order.quantity}x):
+                      </span>
+                      <span className="text-navy-900 font-medium">KSh {order.bookAmount.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">
+                        Delivery ({order.deliveryLocation === 'nairobi' ? 'Local Nairobi' : 'Rest of Kenya'}):
+                      </span>
+                      <span className="text-navy-900 font-medium">KSh {order.deliveryFee.toLocaleString()}</span>
+                    </div>
+                    <div className="border-t border-gray-200 pt-2 flex justify-between">
+                      <span className="text-navy-900 font-bold">Total Paid:</span>
+                      <span className="text-navy-900 font-bold">KSh {order.totalAmount.toLocaleString()}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Delivery Information */}
+                <div className="border-t border-gray-200 pt-4">
+                  <h4 className="text-sm font-semibold text-gray-800 mb-3">Delivery Information</h4>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <div className="flex items-start">
+                      <svg className="w-5 h-5 text-blue-600 mr-2 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z" />
+                      </svg>
+                      <div className="text-sm">
+                        <p className="text-blue-800 font-medium">
+                          {order.deliveryLocation === 'nairobi' 
+                            ? 'Local Nairobi Delivery' 
+                            : 'Kenya-wide Delivery'
+                          }
+                        </p>
+                        <p className="text-blue-700 mt-1">
+                          Delivery Fee: KSh {order.deliveryFee.toLocaleString()} 
+                          {order.deliveryLocation === 'nairobi' 
+                            ? ' (Local transport within Nairobi)' 
+                            : ' (Delivery to rest of Kenya)'
+                          }
+                        </p>
+                        <p className="text-blue-600 text-xs mt-1">
+                          Expected delivery: 
+                          {order.deliveryLocation === 'nairobi' 
+                            ? ' 2-3 business days' 
+                            : ' 3-5 business days'
+                          }
+                        </p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -159,7 +218,7 @@ export default function Confirmation() {
                   </div>
                   <h4 className="font-semibold text-navy-900 mb-2">Delivery</h4>
                   <p className="text-sm text-gray-700">
-                    You'll receive your copy within 3-5 business days in Nairobi.
+                    You'll receive your copy within {order.deliveryLocation === 'nairobi' ? '2-3' : '3-5'} business days.
                   </p>
                 </div>
               </div>

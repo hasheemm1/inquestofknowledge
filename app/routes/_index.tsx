@@ -49,12 +49,12 @@ export default function Index() {
 
               {/* Launch Event Announcement */}
               <div className="bg-gold-400 text-navy-900 px-6 py-4 rounded-lg border border-gold-500 mb-6">
-                <div className="flex items-center justify-between">
-                  <div>
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                  <div className="flex-1">
                     <div className="font-bold text-lg">📅 Book Launch Event</div>
-                    <div className="text-sm">September 27th • Sarit Center • FREE Entry • Live on YouTube</div>
+                    <div className="text-sm mt-1">September 27th • Sarit Center • FREE Entry • Live on YouTube</div>
                   </div>
-                  <Link to="/launch" className="bg-navy-900 text-white px-4 py-2 rounded-lg hover:bg-navy-800 transition-colors font-semibold">
+                  <Link to="/launch" className="bg-navy-900 text-white px-4 py-2 rounded-lg hover:bg-navy-800 transition-colors font-semibold text-center whitespace-nowrap">
                     Learn More
                   </Link>
                 </div>
