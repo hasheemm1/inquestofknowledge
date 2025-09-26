@@ -2,6 +2,8 @@ import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from "@remi
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
+import { getFirestore } from "firebase-admin/firestore";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,6 +14,43 @@ export const meta: MetaFunction = () => {
 
 // Simple session storage for demo purposes
 const sessions = new Map<string, { username: string; expiresAt: number }>();
+
+// Initialize Firebase Admin
+if (!getApps().length) {
+  const serviceAccount = require("../../serviceAccount.json");
+  initializeApp({
+    credential: cert(serviceAccount),
+  });
+}
+
+const db = getFirestore();
+
+// Firestore functions for admin settings
+async function getYouTubeUrl(): Promise<string | null> {
+  try {
+    const doc = await db.collection('admin').doc('settings').get();
+    if (doc.exists) {
+      const data = doc.data();
+      return data?.youtubeUrl || null;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error getting YouTube URL:', error);
+    return null;
+  }
+}
+
+async function setYouTubeUrl(url: string | null): Promise<void> {
+  try {
+    await db.collection('admin').doc('settings').set({
+      youtubeUrl: url,
+      updatedAt: new Date().toISOString(),
+    }, { merge: true });
+  } catch (error) {
+    console.error('Error setting YouTube URL:', error);
+    throw error;
+  }
+}
 
 function generateSessionId(): string {
   return Math.random().toString(36).substring(2) + Date.now().toString(36);
@@ -50,9 +89,8 @@ export async function loader({ request }: LoaderFunctionArgs) {
     return json({ authenticated: false, youtubeUrl: null });
   }
   
-  // For demo, we'll store the YouTube URL in memory
-  // In production, you'd want to use a database
-  const youtubeUrl = globalThis.__youtubeUrl || null;
+  // Load YouTube URL from Firestore
+  const youtubeUrl = await getYouTubeUrl();
   
   return json({ authenticated: true, youtubeUrl });
 }
@@ -104,10 +142,13 @@ export async function action({ request }: ActionFunctionArgs) {
     
     const youtubeUrl = formData.get("youtubeUrl") as string;
     
-    // Store in global variable for demo (use database in production)
-    globalThis.__youtubeUrl = youtubeUrl || null;
-    
-    return json({ success: true, youtubeUrl: globalThis.__youtubeUrl });
+    try {
+      // Store in Firestore
+      await setYouTubeUrl(youtubeUrl || null);
+      return json({ success: true, youtubeUrl: youtubeUrl || null });
+    } catch (error) {
+      return json({ error: "Failed to save YouTube URL" }, { status: 500 });
+    }
   }
   
   return json({ error: "Invalid action" }, { status: 400 });

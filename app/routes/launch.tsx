@@ -3,6 +3,8 @@ import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { useState, useEffect } from "react";
 import Navigation from "~/components/Navigation";
+import { getFirestore } from "firebase-admin/firestore";
+import { initializeApp, getApps, cert } from "firebase-admin/app";
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,9 +14,33 @@ export const meta: MetaFunction = () => {
   ];
 };
 
+// Initialize Firebase Admin
+if (!getApps().length) {
+  const serviceAccount = require("../serviceAccount.json");
+  initializeApp({
+    credential: cert(serviceAccount),
+  });
+}
+
+const db = getFirestore();
+
+async function getYouTubeUrl(): Promise<string | null> {
+  try {
+    const doc = await db.collection('admin').doc('settings').get();
+    if (doc.exists) {
+      const data = doc.data();
+      return data?.youtubeUrl || null;
+    }
+    return null;
+  } catch (error) {
+    console.error('Error getting YouTube URL:', error);
+    return null;
+  }
+}
+
 export async function loader({ request }: LoaderFunctionArgs) {
-  // Get the YouTube URL from global storage (in production, use a database)
-  const youtubeUrl = globalThis.__youtubeUrl || null;
+  // Get the YouTube URL from Firestore
+  const youtubeUrl = await getYouTubeUrl();
   
   return json({ youtubeUrl });
 }
