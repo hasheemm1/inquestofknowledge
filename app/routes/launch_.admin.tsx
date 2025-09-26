@@ -132,10 +132,9 @@ function extractVideoId(url: string): string | null {
 
 function createEmbedUrl(videoId: string): string {
   // Add autoplay and other parameters for better live stream experience
-  // Note: Modern browsers may block autoplay unless muted or user has interacted
   const params = new URLSearchParams({
     autoplay: '1',
-    mute: '1', // Start muted to comply with browser autoplay policies
+    mute: '0', // Try unmuted first - browser may override if needed
     rel: '0', // Don't show related videos
     modestbranding: '1', // Reduce YouTube branding
     iv_load_policy: '3', // Hide annotations
@@ -312,7 +311,7 @@ function AdminDashboard() {
                   <strong>Embed URL:</strong> {embedUrl}
                 </p>
                 <p className="text-xs text-green-700 mt-1">
-                  ✓ Autoplay enabled for live streams
+                  ✓ Autoplay enabled with sound (unmuted)
                 </p>
               </div>
             )}
