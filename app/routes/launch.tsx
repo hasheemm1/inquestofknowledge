@@ -1,5 +1,6 @@
-import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { Link, useLoaderData } from "@remix-run/react";
 import { useState, useEffect } from "react";
 import Navigation from "~/components/Navigation";
 
@@ -10,6 +11,48 @@ export const meta: MetaFunction = () => {
     { name: "keywords", content: "book launch, Sarit Center, Dr. Vibha Shah, biography, September 27, Nairobi, Kenya" },
   ];
 };
+
+export async function loader({ request }: LoaderFunctionArgs) {
+  // Get the YouTube URL from global storage (in production, use a database)
+  const youtubeUrl = globalThis.__youtubeUrl || null;
+  
+  return json({ youtubeUrl });
+}
+
+function extractVideoId(url: string): string | null {
+  if (!url) return null;
+  
+  // Handle various YouTube URL formats
+  const patterns = [
+    /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/,
+    /^([a-zA-Z0-9_-]{11})$/ // Direct video ID
+  ];
+  
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match) return match[1];
+  }
+  
+  return null;
+}
+
+function createEmbedUrl(videoId: string): string {
+  // Add autoplay and other parameters for better live stream experience
+  // Note: Modern browsers may block autoplay unless muted or user has interacted
+  const params = new URLSearchParams({
+    autoplay: '1',
+    mute: '1', // Start muted to comply with browser autoplay policies
+    rel: '0', // Don't show related videos
+    modestbranding: '1', // Reduce YouTube branding
+    iv_load_policy: '3', // Hide annotations
+    cc_load_policy: '0', // Hide captions by default
+    playsinline: '1', // Play inline on mobile
+    enablejsapi: '1', // Enable JS API for better control
+    origin: typeof window !== 'undefined' ? window.location.origin : '',
+  });
+  
+  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`;
+}
 
 function CountdownTimer() {
   const [timeLeft, setTimeLeft] = useState({
@@ -84,40 +127,101 @@ function CountdownTimer() {
 }
 
 export default function Launch() {
+  const { youtubeUrl } = useLoaderData<typeof loader>();
+  const videoId = extractVideoId(youtubeUrl);
+  const embedUrl = videoId ? createEmbedUrl(videoId) : null;
+  
   return (
     <div className="min-h-screen">
       <Navigation currentPath="/launch" />
 
-      {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
-        <div className="absolute inset-0 bg-black/20"></div>
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gold-400 text-navy-900 px-4 py-2 rounded-full inline-block mb-6 font-semibold text-sm uppercase tracking-wide">
-            Book Launch Event
-          </div>
-          <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
-            Book Launch
-          </h1>
-          <h2 className="font-serif text-2xl md:text-3xl text-gold-300 mb-8">
-            In Quest of Knowledge
-          </h2>
-          <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Join us for the official launch of "In Quest of Knowledge - A Biography of Late Dr. Vibha Dineshkumar Shah"
-          </p>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto border border-white/20">
-            <div className="grid md:grid-cols-2 gap-4 text-white">
-              <div>
-                <div className="text-gold-300 font-semibold">Date</div>
-                <div className="text-xl">September 27th, 2025</div>
+      {/* Hero Section - Video or Event Info */}
+      {embedUrl ? (
+        /* Live Stream Hero */
+        <section className="relative py-12 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-8">
+              <div className="bg-red-600 text-white px-4 py-2 rounded-full inline-block mb-4 font-semibold text-sm uppercase tracking-wide animate-pulse">
+                🔴 LIVE NOW
               </div>
-              <div>
-                <div className="text-gold-300 font-semibold">Venue</div>
-                <div className="text-xl">Sarit Center Expo</div>
+              <h1 className="font-serif text-3xl md:text-5xl font-bold text-white mb-4">
+                Book Launch Live Stream
+              </h1>
+              <h2 className="font-serif text-xl md:text-2xl text-gold-300 mb-6">
+                In Quest of Knowledge
+              </h2>
+            </div>
+            
+            {/* Live Video Hero */}
+            <div className="max-w-5xl mx-auto">
+              <div className="aspect-video bg-black rounded-xl overflow-hidden shadow-2xl border border-gold-400/20">
+                <iframe
+                  src={embedUrl}
+                  className="w-full h-full"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title="Launch Event Live Stream"
+                />
+              </div>
+              
+              {/* Live Stream Info */}
+              <div className="mt-6 text-center">
+                <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 max-w-2xl mx-auto border border-white/20">
+                  <div className="grid md:grid-cols-2 gap-4 text-white text-sm">
+                    <div>
+                      <div className="text-gold-300 font-semibold">Date</div>
+                      <div>September 27th, 2025</div>
+                    </div>
+                    <div>
+                      <div className="text-gold-300 font-semibold">Venue</div>
+                      <div>Sarit Center Expo</div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        /* Standard Event Hero */
+        <section className="relative py-20 bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900">
+          <div className="absolute inset-0 bg-black/20"></div>
+          <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="bg-gold-400 text-navy-900 px-4 py-2 rounded-full inline-block mb-6 font-semibold text-sm uppercase tracking-wide">
+              Book Launch Event
+            </div>
+            <h1 className="font-serif text-4xl md:text-6xl font-bold text-white mb-6">
+              Book Launch
+            </h1>
+            <h2 className="font-serif text-2xl md:text-3xl text-gold-300 mb-8">
+              In Quest of Knowledge
+            </h2>
+            <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join us for the official launch of "In Quest of Knowledge - A Biography of Late Dr. Vibha Dineshkumar Shah"
+            </p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto border border-white/20">
+              <div className="grid md:grid-cols-2 gap-4 text-white">
+                <div>
+                  <div className="text-gold-300 font-semibold">Date</div>
+                  <div className="text-xl">September 27th, 2025</div>
+                </div>
+                <div>
+                  <div className="text-gold-300 font-semibold">Venue</div>
+                  <div className="text-xl">Sarit Center Expo</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Countdown Timer */}
+            <div className="mt-8 bg-navy-800/50 backdrop-blur-sm rounded-lg p-6 max-w-2xl mx-auto border border-white/10">
+              <h3 className="text-lg font-semibold mb-6 text-gold-300">Countdown to Launch Day</h3>
+              <CountdownTimer />
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Event Details */}
       <section className="py-16 bg-white">
@@ -235,29 +339,27 @@ export default function Launch() {
         </div>
       </section>
 
-      {/* YouTube Live Stream Info */}
-      <section className="py-16 bg-navy-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-red-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-            </svg>
+      {/* YouTube Live Stream Info - Only show when no video is active */}
+      {!embedUrl && (
+        <section className="py-16 bg-navy-900 text-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="bg-red-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6">
+              <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </div>
+            <h3 className="font-serif text-3xl font-bold mb-6">
+              Watch Live on YouTube
+            </h3>
+            <p className="text-xl text-gray-300 mb-8">
+              Can't make it to Sarit Center? No problem! The entire launch event will be streamed live on YouTube.
+            </p>
+            <p className="text-gray-400 text-sm">
+              YouTube live stream will appear above when the event goes live
+            </p>
           </div>
-          <h3 className="font-serif text-3xl font-bold mb-6">
-            Watch Live on YouTube
-          </h3>
-          <p className="text-xl text-gray-300 mb-8">
-            Can't make it to Sarit Center? No problem! The entire launch event will be streamed live on YouTube.
-          </p>
-          <div className="bg-navy-800 rounded-lg p-6 max-w-2xl mx-auto">
-            <h4 className="text-lg font-semibold mb-6 text-gold-300">Countdown to Launch Day</h4>
-            <CountdownTimer />
-          </div>
-          <p className="text-gray-400 text-sm mt-6">
-            YouTube channel link will be shared closer to the event date
-          </p>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Contact for More Info */}
       <section className="py-16 bg-white">
