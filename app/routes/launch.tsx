@@ -3,8 +3,7 @@ import { json } from "@remix-run/node";
 import { Link, useLoaderData } from "@remix-run/react";
 import { useState, useEffect } from "react";
 import Navigation from "~/components/Navigation";
-import { getFirestore } from "firebase-admin/firestore";
-import { initializeApp, getApps, cert } from "firebase-admin/app";
+import { db } from "~/lib/firebase";
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,16 +12,6 @@ export const meta: MetaFunction = () => {
     { name: "keywords", content: "book launch, Sarit Center, Dr. Vibha Shah, biography, September 27, Nairobi, Kenya" },
   ];
 };
-
-// Initialize Firebase Admin
-if (!getApps().length) {
-  const serviceAccount = require("../serviceAccount.json");
-  initializeApp({
-    credential: cert(serviceAccount),
-  });
-}
-
-const db = getFirestore();
 
 async function getYouTubeUrl(): Promise<string | null> {
   try {

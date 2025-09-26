@@ -2,8 +2,7 @@ import type { ActionFunctionArgs, LoaderFunctionArgs, MetaFunction } from "@remi
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
-import { getFirestore } from "firebase-admin/firestore";
-import { initializeApp, getApps, cert } from "firebase-admin/app";
+import { db } from "~/lib/firebase";
 
 export const meta: MetaFunction = () => {
   return [
@@ -14,16 +13,6 @@ export const meta: MetaFunction = () => {
 
 // Simple session storage for demo purposes
 const sessions = new Map<string, { username: string; expiresAt: number }>();
-
-// Initialize Firebase Admin
-if (!getApps().length) {
-  const serviceAccount = require("../../serviceAccount.json");
-  initializeApp({
-    credential: cert(serviceAccount),
-  });
-}
-
-const db = getFirestore();
 
 // Firestore functions for admin settings
 async function getYouTubeUrl(): Promise<string | null> {
