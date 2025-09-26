@@ -79,7 +79,7 @@ function CountdownTimer() {
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const launchDate = new Date('2025-09-27T10:00:00+03:00').getTime(); // 10 AM EAT
+      const launchDate = new Date('2025-09-27T15:30:00+03:00').getTime(); // 3:30 PM EAT
       const now = new Date().getTime();
       const distance = launchDate - now;
 
@@ -260,7 +260,7 @@ export default function Launch() {
                   <div>
                     <h4 className="text-lg font-semibold text-navy-900 mb-2">Date & Time</h4>
                     <p className="text-gray-700">Friday, September 27th, 2025</p>
-                    <p className="text-gray-600 text-sm">Time details to be announced</p>
+                    <p className="text-gray-600 text-sm">3:30 PM East African Time</p>
                   </div>
                 </div>
 
