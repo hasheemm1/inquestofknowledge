@@ -3,6 +3,7 @@ import { json, redirect } from "@remix-run/node";
 import { Form, useActionData, useLoaderData } from "@remix-run/react";
 import { useState } from "react";
 import { db } from "~/lib/firebase";
+import { broadcastYouTubeUrlUpdate } from "./launch.sse";
 
 export const meta: MetaFunction = () => {
   return [
@@ -134,6 +135,10 @@ export async function action({ request }: ActionFunctionArgs) {
     try {
       // Store in Firestore
       await setYouTubeUrl(youtubeUrl || null);
+      
+      // Broadcast the change to all connected viewers
+      broadcastYouTubeUrlUpdate(youtubeUrl || null);
+      
       return json({ success: true, youtubeUrl: youtubeUrl || null });
     } catch (error) {
       return json({ error: "Failed to save YouTube URL" }, { status: 500 });

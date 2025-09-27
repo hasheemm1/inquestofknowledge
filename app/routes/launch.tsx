@@ -141,9 +141,49 @@ function CountdownTimer() {
 }
 
 export default function Launch() {
-  const { youtubeUrl } = useLoaderData<typeof loader>();
+  const { youtubeUrl: initialYoutubeUrl } = useLoaderData<typeof loader>();
+  const [youtubeUrl, setYoutubeUrl] = useState(initialYoutubeUrl);
+  const [streamUpdated, setStreamUpdated] = useState(false);
   const videoId = extractVideoId(youtubeUrl);
   const embedUrl = videoId ? createEmbedUrl(videoId) : null;
+  
+  // Listen for real-time YouTube URL updates
+  useEffect(() => {
+    const eventSource = new EventSource('/launch/sse');
+    
+    eventSource.onmessage = (event) => {
+      try {
+        const data = JSON.parse(event.data);
+        
+        if (data.type === 'youtube-url-update') {
+          console.log('Received YouTube URL update:', data.youtubeUrl);
+          setYoutubeUrl(data.youtubeUrl);
+          
+          // Show update notification briefly
+          setStreamUpdated(true);
+          setTimeout(() => setStreamUpdated(false), 3000);
+        }
+      } catch (error) {
+        console.error('Error parsing SSE message:', error);
+      }
+    };
+    
+    eventSource.onerror = (error) => {
+      console.error('SSE connection error:', error);
+      // Automatically reconnect after 5 seconds
+      setTimeout(() => {
+        if (eventSource.readyState === EventSource.CLOSED) {
+          console.log('Attempting to reconnect SSE...');
+          // The component will recreate the connection on next render
+        }
+      }, 5000);
+    };
+    
+    // Cleanup on unmount
+    return () => {
+      eventSource.close();
+    };
+  }, []);
   
   return (
     <div className="min-h-screen">
@@ -194,6 +234,14 @@ export default function Launch() {
                     </div>
                   </div>
                 </div>
+                
+                {/* Update notification */}
+                {streamUpdated && (
+                  <div className="mt-3 bg-green-600 text-white px-4 py-2 rounded-lg text-sm animate-pulse">
+                    🔄 Stream updated! New content loading...
+                  </div>
+                )}
+                
                 <p className="text-xs text-gray-300 mt-3">
                   🔊 Video will autoplay with sound (if browser allows)
                 </p>
